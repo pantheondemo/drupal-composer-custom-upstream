@@ -38,3 +38,21 @@ jobs:
     # Testing deployment
     - name: Deploy into default.
       run: git checkout default; git rebase master; git push;
+
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Git Commit and Push
+      uses: github-actions-x/commit@v2.6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        push-branch: 'default'
+        commit-message: 'Deploy changes to default.'
+        force-add: 'false'
+        files: *
+        name: Pantheon SE Bot
+        email: se@pantheon.io
