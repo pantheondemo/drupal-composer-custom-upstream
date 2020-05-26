@@ -42,7 +42,6 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         push-branch: default
         commit-message: Deploy changes to default.
-        force-add: false
-        files: "*"
+        rebase: true
         name: Pantheon SE Bot
         email: se@pantheon.io
