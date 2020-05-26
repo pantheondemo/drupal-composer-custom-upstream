@@ -1,6 +1,7 @@
 name: drupal-composer-custom-upstream
 recipe: pantheon
 config:
+  drush: "*"
   framework: drupal8
   webroot: web
   xdebug: false
