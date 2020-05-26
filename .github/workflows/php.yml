@@ -50,9 +50,9 @@ jobs:
       uses: github-actions-x/commit@v2.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: 'default'
-        commit-message: 'Deploy changes to default.'
-        force-add: 'false'
-        files: *
+        push-branch: default
+        commit-message: Deploy changes to default.
+        force-add: false
+        files: "*"
         name: Pantheon SE Bot
         email: se@pantheon.io
