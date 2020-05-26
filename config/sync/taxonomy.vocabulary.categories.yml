@@ -1,0 +1,8 @@
+uuid: 95d42a5b-ae0c-4fb7-9597-09599717e44a
+langcode: en
+status: true
+dependencies: {  }
+name: Categories
+vid: categories
+description: 'List of terms used to categorize site content.'
+weight: 0

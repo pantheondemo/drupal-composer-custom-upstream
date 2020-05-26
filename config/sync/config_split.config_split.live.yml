@@ -1,0 +1,17 @@
+uuid: 7332d7c5-0a97-494b-abd2-db43aa2e0c3d
+langcode: en
+status: true
+dependencies: {  }
+id: live
+label: Live
+description: ''
+folder: ../config/live
+module: {  }
+theme: {  }
+blacklist:
+  - system.theme
+  - system.theme.global
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

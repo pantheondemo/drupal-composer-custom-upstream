@@ -1,0 +1,18 @@
+uuid: d4864fa5-45b0-47dc-9d47-f8ee7af7233b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Blog
+type: blog
+description: 'Used for regularly scheduled corporate blog posts.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
