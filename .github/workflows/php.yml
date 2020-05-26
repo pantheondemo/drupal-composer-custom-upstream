@@ -7,8 +7,8 @@ on:
     branches: [ master ]
 
 jobs:
+  # Build the assets.
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -20,9 +20,20 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+  # Run sniffing and validation.
+  test:
+    steps:
+      - uses: actions/checkout@v2
+  
+      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+      # Docs: https://getcomposer.org/doc/articles/scripts.md
+  
+      - name: Run PHP code sniffer
+        run: composer run-script code-sniff
+      
+  deploy:
+      steps:
+        - uses: actions/checkout@v2
 
-    - name: Run PHP code sniffer
-      run: composer run-script code-sniff
-
+        - name: Deploy into default.
+          run: git checkout default; git rebase master; git push;
