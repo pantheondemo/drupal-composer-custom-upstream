@@ -118,3 +118,7 @@ Thumbs.db
 # Lando
 # Leave only example file, let others customize.
 .lando.yml
+
+# Global Composer
+composer.json
+composer.lock
