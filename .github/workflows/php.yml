@@ -34,10 +34,6 @@ jobs:
     # Run sniffing and validation.
     - name: Run PHP code sniffer
       run: composer run-script code-sniff
-      
-    # Testing deployment
-    - name: Deploy into default.
-      run: git checkout default; git rebase master; git push;
 
 
   deploy:
