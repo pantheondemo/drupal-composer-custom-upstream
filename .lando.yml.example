@@ -1,0 +1,9 @@
+name: drupal-composer-custom-upstream
+recipe: pantheon
+config:
+  framework: drupal8
+  webroot: web
+  xdebug: false
+  index: false
+  edge: false
+  cache: true
