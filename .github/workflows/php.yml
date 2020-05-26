@@ -2,9 +2,9 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ master ]
+    branches: [ default ]
   pull_request:
-    branches: [ master ]
+    branches: [ default ]
 
 jobs:
   # Build the assets.
@@ -35,12 +35,12 @@ jobs:
     - name: Run PHP code sniffer
       run: composer run-script code-sniff
     
-    # Deploy to default branch
+    # Deploy to master branch
     - name: Git Commit and Push
       uses: github-actions-x/commit@v2.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: default
+        push-branch: master
         commit-message: Deploy changes to default.
         rebase: true
         name: Pantheon SE Bot
