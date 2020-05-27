@@ -41,14 +41,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # Deploy to master branch
-      - name: git checkout
-        run: git checkout master
-      
-      - name: git config
-        run: git config --global user.email "presales@pantheon.io"; git config --global user.name "Pantheon SE" 
-          
-      - name: git merge
-        run: git merge default master --no-commit && git push https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY} -f
+      - name: Opening pull request
+        id: pull
+        uses: tretuna/sync-branches@1.1.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "default"
+          TO_BRANCH: "master"
