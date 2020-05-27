@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
@@ -40,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+      
       # Deploy to master branch
       - name: Git Commit and Push
         uses: github-actions-x/commit@v2.6
