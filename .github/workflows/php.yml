@@ -10,6 +10,7 @@ jobs:
   # Build the assets.
   build:
     runs-on: ubuntu-latest
+    name: Composer Build
 
     steps:
     - uses: actions/checkout@v2
@@ -31,17 +32,30 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    # Run sniffing and validation.
-    - name: Run PHP code sniffer
-      run: composer run-script code-sniff
-    
-    # Deploy to master branch
-    - name: Git Commit and Push
-      uses: github-actions-x/commit@v2.6
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: master
-        commit-message: Deploy changes to default.
-        rebase: true
-        name: Pantheon SE Bot
-        email: se@pantheon.io
+  test:
+    needs: [build]
+    name: PHPCS Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      # Run sniffing and validation.
+      - name: Run PHP code sniffer
+        run: composer run-script code-sniff
+  
+  deploy:
+    needs: [build, test]
+    if: always()
+    name: Deploy to Master
+    runs-on: ubuntu-latest
+
+    steps:
+      # Deploy to master branch
+      - name: Git Commit and Push
+        uses: github-actions-x/commit@v2.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: master
+          commit-message: Deploy changes to default.
+          rebase: true
+          name: Pantheon SE Bot
+          email: se@pantheon.io
