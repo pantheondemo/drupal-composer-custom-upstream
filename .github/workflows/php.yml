@@ -39,15 +39,14 @@ jobs:
     if: always()
     name: Deploy to Master
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Opening pull request
-        id: pull
-        uses: tretuna/sync-branches@1.1.0
+      - name: Git Sync Action
+        uses: wei/git-sync@v2.0.0
         with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: "default"
-          TO_BRANCH: "master"
+          source_repo: https://github.com/${GITHUB_REPOSITORY}
+          source_branch: "refs/remotes/source/default"
+          destination_repo: https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}
+          destination_branch: "refs/heads/master"
+
+          
