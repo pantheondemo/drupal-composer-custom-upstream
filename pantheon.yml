@@ -14,3 +14,9 @@ workflows:
       - type: webphp
         description: Import configuration from .yml files
         script: private/scripts/quicksilver/drush_config_import.php
+  
+  deploy_product:
+    after:
+      - type: webphp
+        description: Install basic site profile.
+        script: private/scripts/quicksilver/drush_site_install.php
