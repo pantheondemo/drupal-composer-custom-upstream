@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       # Deploy to master branch
       - name: Git Commit and Push
         uses: github-actions-x/commit@v2.6
@@ -50,6 +50,5 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push-branch: master
           commit-message: Deploy changes to default.
-          rebase: true
           name: Pantheon SE Bot
           email: se@pantheon.io
