@@ -44,11 +44,11 @@ jobs:
       - uses: actions/checkout@v2
 
       # Deploy to master branch
-      - name: Git Commit and Push
-        uses: github-actions-x/commit@v2.6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: master
-          commit-message: Deploy changes to default.
-          name: Pantheon SE Bot
-          email: se@pantheon.io
+      - name: git checkout
+        run: git checkout master
+      
+      - name: git config
+        run: git config --global user.email "presales@pantheon.io"; git config --global user.name "Pantheon SE" 
+          
+      - name: git merge
+        run: git merge default master --no-commit && git push https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY} -f
